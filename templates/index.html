@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/style.css">
+    <title>Que cachorro sou eu!</title>
+</head>
+
+<body>
+    <header>
+        <img src="../static/img/dog.png">
+        <h1>Que cachorro sou eu</h1>
+    </header>
+    <main>
+        <div class="container">
+            <div class="form">
+                <form action="/" method="post">
+                    <label>Informe seu nome</label>
+                    <input type="text" name="nome" />
+                    <button type="submit">Enviar</button>
+                </form>
+            </div>
+            <div class="cachorro">
+                {% if not url_imagem %}
+                <img src="..." alt="..." />
+                {% else %}
+                    {% if url_imagem.endswith('.mp4') %}
+                    <video controls>
+                        <source src="{{ url_imagem }}" type="video/mp4">
+                        Seu navegador não suporta o elemento de vídeo.
+                    </video>
+                    {% else %}
+                    <img src="{{ url_imagem }}" alt="Imagem de cachorro" />
+                    {% endif %}
+                {% endif %}
+                {% if erro %}
+                <p>{{ erro }}</p>
+                {% endif %}
+            </div>
+        </div>
+    </main>
+    <footer>
+        <p>Desenvolvido por um cachorro. Au au!</p>
+    </footer>
+</body>
+
+</html>
